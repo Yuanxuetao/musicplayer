@@ -1,0 +1,201 @@
+.fl{
+    float: left;
+}
+
+.ovh{
+    overflow: hidden;
+}
+.audioPlayerPage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 2;
+    header {
+        height: 40px;
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        line-height: 40px;
+        font-size: 18px;
+        border-bottom:1px solid rgba(255,255,255,0.2);
+        span.icon-houtui1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            font-size: 26px;
+        }
+    }
+    .content{
+        overflow: hidden;position: relative;
+        .cd{
+            width: 75%;margin: 0 auto;
+            position: relative;top:65px;
+            .cd-mine{
+                width: 100%;
+                img{
+                    width: 100%;display: block;
+                }
+            }
+            .singerImg{
+                width: 65%;position: absolute;top: 50%;left:50%;
+                transform: translate(-50%,-50%);
+                border-radius: 50%;    overflow: hidden;
+                animation-name:donghua;
+                animation-duration:10s;
+                animation-timing-function:linear;
+                animation-iteration-count:infinite;
+                animation-play-state:paused;
+                img{
+                    width: 100%;display: block;
+                }
+                &.cur{
+                    animation-play-state:running;
+                }
+                @keyframes donghua{
+                    from {
+                        transform: translate(-50%,-50%) rotate(0deg);
+                    }
+                    to {
+                        transform: translate(-50%,-50%) rotate(360deg);
+                    }
+                }
+            }
+            
+        }
+        .swith{
+            position: absolute;top: -19px;left:45%;width: 100px;height: 149px;
+            transform-origin:19px 19px;
+            transform: rotate(-32deg);
+            transition: all 0.8s ease 0s;
+            img{
+                width: 100%;
+            }
+            &.cur{
+                transform: rotate(0deg);
+            }
+        }
+    }
+    .setting{
+        position: absolute; width: 100%; bottom: 110px;left: 0;
+        ul{
+            overflow: hidden;
+            li{
+                float: left;
+                width: 25%;height: 40px;text-align: center;line-height: 40px;color: #fff;
+                font-size: 26px;
+            }
+            li.icon-more-vert{
+                font-size: 32px;
+            } 
+            li.icon-icon--{
+                font-size: 32px;
+            }
+            li.icon-BAI-pinglun{
+                font-size: 32px;
+            }
+        }
+    }
+    .progressBar{
+        overflow: hidden;height: 20px;
+        position: absolute;
+        width: 100%;
+        bottom: 70px;
+        left: 0;
+        .currentTime{
+            width: 15%;float: left;text-align: right;font-size: 10px;color: rgba(255,255,255,0.6);line-height: 20px;
+        }
+        .progress{
+            width: 66%;float: left;height: 2px;margin: 9px 2%;
+            .durationBar{
+                width: 100%;background: green;height: 2px;display: block;
+            }
+            .currentTimeBar{
+                width: 20%;background: red;height: 2px;display: block;
+            }
+        }
+        .duration{
+            width: 15%;float: left;text-align: left;font-size: 10px;color: rgba(255,255,255,0.6);line-height: 20px;
+        }
+    }
+    .controller{
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        width: 100%;
+        .iconfont{
+            width: 40px;height: 40px;text-align: center;color:rgba(255,255,255,0.5);;line-height: 40px;font-size: 26px;
+        }
+        span.playstate{
+            position: absolute;top: 0;left: 20px;font-size: 22px;
+        }
+        ul{
+            width: 55%;margin: 0 auto;overflow: hidden;
+            li.iconfont{
+                float: left; width: 33.33%;font-size: 32px; 
+            }
+            li.iconfont.icon-bofang,li.iconfont.icon-pause-20{
+                font-size: 40px;
+            }
+        }
+        span.icon-zhankaicaidan{
+            position: absolute;top: 0;right: 20px;font-size: 32px; 
+        }
+    }
+    .drawer{
+        /*弹窗的样式 设置了几个z-index*/
+        height: 300px;position: absolute;bottom: -300px;width: 100%;background: #fff;z-index: 4;
+        transition: all 0.6s ease 0s;border-top-left-radius: 10px;border-top-right-radius: 10px;
+        ul{
+            margin-top: 20px;height: 240px;overflow-y: scroll;
+            li{
+                height: 40px;line-height: 40px;position: relative;padding-left: 10px;
+                span.icon-laba{
+                    font-size: 20px;line-height: 40px;text-align: center;width:30px;
+                }
+                p{
+                    span{
+                        color: #525151;font-size: 12px;
+                    }
+                    span.musicName{
+                        color: #292929;font-size: 18px;
+                    }
+                }
+                span.icon-bofang{
+                    width: 40px;position: absolute;top: 0;right: 10px;text-align: center;line-height: 40px;height: 40px;font-size: 30px;
+                }
+                &.cur{
+                    color: red;
+                    p{
+                        span{
+                            color: red!important;
+                        }
+                    }
+                }
+            }
+        }
+        &.cur{
+            bottom: 0;
+        }
+        .close{
+            width: 100%;height: 40px;text-align: center;line-height: 40px;position: absolute;bottom: 0;left: 0;
+            background: #fff;
+        }
+
+    }
+    .shade{
+        /*这里是灰色的遮罩 默认的z-index -1 就不会影响别的层级的点击事件*/ 
+        width: 100%;height: 100%;position: fixed;top: 0;left: 0;background: rgba(0,0,0,0.6);
+        z-index: -1;opacity: 0;transition: all 0.6s ease 0s;
+        &.cur{
+            /*点击显示抽屉的时候 这个遮罩显示 同时设置z-index*/
+            z-index: 3;opacity: 1;
+        }
+    }
+}
